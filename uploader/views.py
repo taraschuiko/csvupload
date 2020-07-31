@@ -15,4 +15,4 @@ def upload(request):
       table = PeopleTable(request.FILES['table'])
       table.sync_with_db()
 
-  return HttpResponse('Uploaded')
+  return render(request, 'success.html', {'stats': table.stats})

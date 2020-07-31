@@ -4,6 +4,11 @@ import datetime
 
 class PeopleTable:
   table = []
+  stats = {
+    'added': 0,
+    'updated': 0,
+    'removed': 0
+  }
 
   def __init__(self, csv_file):
     self.table = csv_string_parse(str(csv_file.read()))
@@ -20,6 +25,7 @@ class PeopleTable:
           date_change = person['dateChange'],
           description = person['description'],
         ).save()
+        self.stats['added'] += 1
       # Update
       if len(Person.objects.filter(
         uid = person['uid']
@@ -33,9 +39,12 @@ class PeopleTable:
           date_change = person['dateChange'],
           description = person['description'],
         )
+        self.stats['updated'] += 1
     # Remove
     for person_db in Person.objects.all():
       remove = True
       for person_table in self.table:
         if person_db.uid == person_table['uid']: remove = False
-      if remove: person_db.delete()
+      if remove:
+        person_db.delete()
+        self.stats['removed'] += 1
