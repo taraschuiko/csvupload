@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import UploadTableForm
+from .people_table import PeopleTable
 
 def index(request):
   form = UploadTableForm()
@@ -11,4 +12,6 @@ def upload(request):
     form = UploadTableForm(request.POST, request.FILES)
     if form.is_valid():
       print("File is uploaded successfully", request.FILES['table'])
+      PeopleTable(request.FILES['table'])
+
   return HttpResponse('Uploaded')
