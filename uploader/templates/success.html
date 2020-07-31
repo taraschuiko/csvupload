@@ -4,11 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Success!</title>
+  <style>
+    td {
+      padding: 6px;
+      border: 1px solid #000
+    }
+  </style>
 </head>
 <body>
   <h1>Success!</h1>
   <p>{{ stats.added }} added</p>
   <p>{{ stats.updated }} updated</p>
   <p>{{ stats.removed }} removed</p>
+
+  <table>
+    <tr>
+      {% for key in people.0 %}
+        <td>
+          {{ key }}
+        </td>
+      {% endfor %}
+    </tr>
+    {% for person in people %}
+      <tr>
+        {% for key, value in person.items %}
+          <td>
+            {{ value }}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
 </body>
 </html>

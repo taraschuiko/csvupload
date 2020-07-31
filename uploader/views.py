@@ -14,5 +14,5 @@ def upload(request):
       print("File is uploaded successfully", request.FILES['table'])
       table = PeopleTable(request.FILES['table'])
       table.sync_with_db()
-
-  return render(request, 'success.html', {'stats': table.stats})
+  print(table.table)
+  return render(request, 'success.html', {'stats': table.stats, 'people': table.table})
