@@ -7,11 +7,10 @@ class PeopleTable:
 
   def __init__(self, csv_file):
     self.table = csv_string_parse(str(csv_file.read()))
-    print(self.table)
 
-  def load_to_db(self):
+  def sync_with_db(self):
     for person in self.table:
-      print(person['dateChange'])
+      # Add
       if not len(Person.objects.filter(uid = person['uid'])):
         Person(
           uid = person['uid'],
@@ -21,6 +20,7 @@ class PeopleTable:
           date_change = person['dateChange'],
           description = person['description'],
         ).save()
+      # Update
       if len(Person.objects.filter(
         uid = person['uid']
       ).exclude(
@@ -33,5 +33,9 @@ class PeopleTable:
           date_change = person['dateChange'],
           description = person['description'],
         )
-
-    print(Person.objects.all())
+    # Remove
+    for person_db in Person.objects.all():
+      remove = True
+      for person_table in self.table:
+        if person_db.uid == person_table['uid']: remove = False
+      if remove: person_db.delete()

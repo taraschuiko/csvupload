@@ -13,6 +13,6 @@ def upload(request):
     if form.is_valid():
       print("File is uploaded successfully", request.FILES['table'])
       table = PeopleTable(request.FILES['table'])
-      table.load_to_db()
+      table.sync_with_db()
 
   return HttpResponse('Uploaded')
