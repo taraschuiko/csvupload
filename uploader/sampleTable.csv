@@ -1,3 +1,3 @@
 uid;firstName;lastName;birthDay;dateChange;description
-0;Taras;Chuiko;30.07.2001;31.07.2020;Developer
-1;Elon;Musk;28.06.1971;20.07.2020;Entrepreneur
+0;Taras;Chuiko;2001-07-30;2020-07-31;Developer
+1;Elon;Musk;1971-06-28;2020-07-20;Entrepreneur

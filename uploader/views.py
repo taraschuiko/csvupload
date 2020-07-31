@@ -12,6 +12,7 @@ def upload(request):
     form = UploadTableForm(request.POST, request.FILES)
     if form.is_valid():
       print("File is uploaded successfully", request.FILES['table'])
-      PeopleTable(request.FILES['table'])
+      table = PeopleTable(request.FILES['table'])
+      table.load_to_db()
 
   return HttpResponse('Uploaded')
