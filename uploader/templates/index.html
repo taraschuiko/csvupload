@@ -6,7 +6,8 @@
   <title>CSV Upload</title>
 </head>
 <body>
-  <form action="upload/" method="POST">
+  <h1>Upload a table</h1>
+  <form action="upload/" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">

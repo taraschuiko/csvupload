@@ -11,5 +11,4 @@ def upload(request):
     form = UploadTableForm(request.POST, request.FILES)
     if form.is_valid():
       print("File is uploaded successfully", request.FILES['table'])
-    print(request.FILES)
-  return HttpResponse('uploading...')
+  return HttpResponse('Uploaded')
