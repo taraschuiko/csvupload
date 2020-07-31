@@ -6,9 +6,10 @@
   <title>CSV Upload</title>
 </head>
 <body>
-  <form action="./upload">
-    <input type="file" name="file">
-    <button>Upload</button>
+  <form action="upload/" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
   </form>
 </body>
 </html>

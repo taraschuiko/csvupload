@@ -55,7 +55,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR + '/uploader/views'
+            BASE_DIR + '/uploader/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
